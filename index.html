@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マスター、コーヒー淹れてよ・改・改・改 テキスト化ツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>マスター、コーヒー淹れてよ・改・改・改 テキスト化ツール</h1>
+        </header>
+
+        <main>
+            <div id="settings-area">
+                <fieldset class="control-group">
+                    <legend>ジャンル</legend>
+                    <div id="genre-selector" class="radio-group">
+                        <!-- ラジオボタンはここに挿入されます -->
+                    </div>
+                </fieldset>
+
+                <fieldset class="control-group">
+                    <legend>ダイス目</legend>
+                    <div id="dice-inputs" class="input-group">
+                        <input type="number" id="dice1" class="dice-input" min="1" max="10" aria-label="ダイス1">
+                        <input type="number" id="dice2" class="dice-input" min="1" max="10" aria-label="ダイス2">
+                        <input type="number" id="dice3" class="dice-input" min="1" max="10" aria-label="ダイス3">
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="button-area">
+                <button id="generate-button">テキスト化！</button>
+            </div>
+            
+            <!-- リセットオプションを追加 -->
+            <div class="options-area">
+                <label>
+                    <input type="checkbox" id="reset-checkbox" checked>
+                    完了後に入力欄をリセット
+                </label>
+            </div>
+
+            <div class="result-area">
+                <div class="result-header">
+                    <label for="result-text">結果</label>
+                    <button id="copy-button">結果をコピー</button>
+                </div>
+                <textarea id="result-text" readonly></textarea>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

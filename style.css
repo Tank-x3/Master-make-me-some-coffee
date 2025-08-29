@@ -1,0 +1,144 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    /* フィードバック反映: 最小幅と最大幅を調整 */
+    min-width: 600px;
+    max-width: 640px;
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 1.5em;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.control-group {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.control-group legend {
+    font-weight: bold;
+    padding: 0 5px;
+    margin-left: 10px;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dice-input {
+    width: 60px;
+    padding: 8px;
+    font-size: 1.2em;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-area {
+    text-align: center;
+    margin: 15px 0;
+}
+
+#generate-button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#generate-button:hover {
+    background-color: #0056b3;
+}
+
+/* フィードバック反映: リセットオプションのスタイルを追加 */
+.options-area {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+.options-area label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.result-area {
+    margin-top: 15px;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.result-header label {
+    font-weight: bold;
+}
+
+#copy-button {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    color: #333;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#copy-button:hover {
+    background-color: #e0e0e0;
+}
+
+#result-text {
+    width: 100%;
+    /* フィードバック反映: 高さを調整 */
+    height: 180px; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 1.1em;
+    resize: vertical;
+}
