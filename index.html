@@ -35,18 +35,22 @@
                 <button id="generate-button">テキスト化！</button>
             </div>
             
-            <!-- リセットオプションを追加 -->
+            <!-- オプションエリアを整理 -->
             <div class="options-area">
                 <label>
                     <input type="checkbox" id="reset-checkbox" checked>
                     完了後に入力欄をリセット
+                </label>
+                <label>
+                    <input type="checkbox" id="autocopy-checkbox" checked>
+                    結果を自動でコピーする
                 </label>
             </div>
 
             <div class="result-area">
                 <div class="result-header">
                     <label for="result-text">結果</label>
-                    <button id="copy-button">結果をコピー</button>
+                    <button id="copy-button">手動でコピー</button>
                 </div>
                 <textarea id="result-text" readonly></textarea>
             </div>
