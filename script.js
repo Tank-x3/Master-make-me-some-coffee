@@ -23,13 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
-/**
- * UIを構築し、イベントリスナーを設定する
- */
 function initializeUI() {
+    // (変更なし)
     const genreSelector = document.getElementById('genre-selector');
     const genres = Object.keys(menuData).filter(key => key !== "特殊効果");
-
     genres.forEach((genre, index) => {
         const label = document.createElement('label');
         const radio = document.createElement('input');
@@ -37,19 +34,14 @@ function initializeUI() {
         radio.name = 'genre';
         radio.value = genre;
         if (index === 0) radio.checked = true;
-
-        // フィードバック反映: クリック時にフォーカスを当てる
         radio.addEventListener('click', (e) => e.target.focus());
-        
         label.appendChild(radio);
         label.appendChild(document.createTextNode(genre));
         genreSelector.appendChild(label);
     });
-
     document.getElementById('generate-button').addEventListener('click', generateAndDisplayResult);
     document.getElementById('copy-button').addEventListener('click', copyToClipboard);
 }
-
 
 /**
  * 「テキスト化！」ボタンが押されたときの処理
@@ -61,6 +53,8 @@ function generateAndDisplayResult() {
     }
 
     const shouldReset = document.getElementById('reset-checkbox').checked;
+    const shouldAutoCopy = document.getElementById('autocopy-checkbox').checked; // ★★★ オプション取得 ★★★
+    
     const selectedGenre = document.querySelector('input[name="genre"]:checked').value;
     const diceInputs = [
         document.getElementById('dice1').value,
@@ -74,7 +68,6 @@ function generateAndDisplayResult() {
         return;
     }
     
-    // 入力値を数値に変換
     const diceResults = [];
     for (const val of diceInputs) {
         const num = parseInt(val, 10);
@@ -91,17 +84,19 @@ function generateAndDisplayResult() {
     
     if (result.startsWith("エラー:")) {
         alert(result);
-        resultTextarea.value = ""; // エラーの場合はテキストエリアは空にする
-        if (shouldReset) clearDiceEntries();
+        resultTextarea.value = "";
     } else {
         resultTextarea.value = result;
-        if (shouldReset) clearDiceEntries();
+        // ★★★ 正常処理時のみ自動コピーを実行 ★★★
+        if (shouldAutoCopy) {
+            copyToClipboard(true); // trueを渡して通知をボタンテキストの変更にする
+        }
     }
+    
+    if (shouldReset) clearDiceEntries();
 }
 
-/**
- * ダイス目からメニューテキストを生成するコアロジック (変更なし)
- */
+// (generateMenu関数は変更なし)
 function generateMenu(genre, diceResults) {
     const rules = menuData[genre];
     if (!rules) return `エラー: 指定されたジャンル '${genre}' は存在しません。`;
@@ -128,25 +123,36 @@ function generateMenu(genre, diceResults) {
 }
 
 /**
- * 「結果をコピー」ボタンが押されたときの処理 (変更なし)
+ * 「結果をコピー」ボタンが押されたときの処理
+ * @param {boolean} isAuto - 自動コピーかどうかを判定するフラグ
  */
-function copyToClipboard() {
+function copyToClipboard(isAuto = false) {
     const resultTextarea = document.getElementById('result-text');
     const content = resultTextarea.value;
+
     if (!content) {
-        alert("コピーする内容がありません。");
+        if (!isAuto) alert("コピーする内容がありません。");
         return;
     }
+
     navigator.clipboard.writeText(content).then(() => {
-        alert("結果をクリップボードにコピーしました。");
+        const copyButton = document.getElementById('copy-button');
+        const originalText = copyButton.textContent;
+        copyButton.textContent = 'コピー完了！';
+        setTimeout(() => { copyButton.textContent = originalText; }, 2000);
+        
+        // 手動コピーの場合のみアラートを表示
+        if (!isAuto) {
+            alert("結果をクリップボードにコピーしました。");
+        }
     }, (err) => {
-        alert("コピーに失敗しました。");
+        if (!isAuto) alert("コピーに失敗しました。");
         console.error('コピー失敗:', err);
     });
 }
 
 /**
- * フィードバック反映: 入力欄をクリアする関数を追加
+ * 入力欄をクリアする関数 (変更なし)
  */
 function clearDiceEntries() {
     const diceInputs = [
