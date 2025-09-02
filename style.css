@@ -3,7 +3,7 @@ body {
     background-color: #f4f4f4;
     color: #333;
     margin: 0;
-    padding: 10px; /* スマホ用に少しパディングを調整 */
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -12,7 +12,6 @@ body {
 
 .container {
     width: 100%;
-    /* min-widthは削除し、max-widthのみに */
     max-width: 640px; 
     background-color: #fff;
     padding: 20px 30px;
@@ -44,7 +43,7 @@ header h1 {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    justify-content: center; /* PCでは中央寄せ */
+    justify-content: center;
 }
 
 .radio-group label {
@@ -90,7 +89,9 @@ header h1 {
 }
 
 .options-area {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* チェックボックス間のスペース */
     margin-bottom: 15px;
     font-size: 0.9em;
     color: #555;
@@ -141,7 +142,7 @@ header h1 {
     resize: vertical;
 }
 
-/* --- ★★★ レスポンシブ対応 (ここから下を追加) ★★★ --- */
+/* --- レスポンシブ対応 --- */
 @media (max-width: 600px) {
     body {
         padding: 0;
@@ -153,21 +154,28 @@ header h1 {
         min-height: 100vh;
     }
     header h1 {
-        font-size: 1.2em; /* タイトルを少し小さく */
+        font-size: 1.2em;
     }
     .radio-group {
-        flex-direction: column; /* 縦並びにする */
-        align-items: flex-start; /* 左揃えにする */
+        flex-direction: column;
+        align-items: flex-start;
         gap: 12px;
     }
     .input-group {
-        justify-content: space-around; /* 均等配置 */
+        justify-content: space-around;
     }
     .dice-input {
-        width: 28%; /* 画面幅に応じた割合で指定 */
+        width: 28%;
         padding: 10px 5px;
     }
     #result-text {
-        height: 150px; /* 高さを少し調整 */
+        height: 150px;
+        /* ★★★ フォントサイズ調整を追加 ★★★ */
+        font-size: 1em; 
+    }
+    .options-area {
+        flex-direction: column; /* 狭い画面では縦に並べる */
+        align-items: center;
+        gap: 8px;
     }
 }
