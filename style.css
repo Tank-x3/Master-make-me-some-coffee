@@ -22,16 +22,35 @@ body {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
+/* ★★★ ヘッダースタイルの修正 ★★★ */
 header {
-    position: relative;
-    text-align: center;
     margin-bottom: 20px;
+    border-bottom: 1px solid #eee; /* 区切り線を追加 */
+    padding-bottom: 15px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* 両端に配置 */
+    align-items: center;
+    gap: 15px; /* タイトルとスイッチ間の最小マージン */
 }
 
 header h1 {
     font-size: 1.5em;
     color: #444;
+    margin: 0; /* h1のデフォルトマージンをリセット */
+    text-align: left; /* 左寄せを基本に */
+    flex-grow: 1; /* 余ったスペースを埋める */
 }
+
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* スイッチが縮まないようにする */
+}
+/* ★★★ ここまで ★★★ */
+
 
 .control-group {
     border: 1px solid #ddd;
@@ -66,105 +85,33 @@ header h1 {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* --- ★★★ ダークモードのスタイル ★★★ --- */
-body.dark-mode {
-    background-color: #2c2c2c;
-    color: #e0e0e0;
-}
-body.dark-mode .container {
-    background-color: #383838;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-body.dark-mode header h1 {
-    color: #f0f0f0;
-}
-body.dark-mode .control-group {
-    border-color: #555;
-}
-body.dark-mode .control-group legend {
-    color: #e0e0e0;
-}
-body.dark-mode .dice-input {
-    background-color: #444;
-    color: #e0e0e0;
-    border-color: #666;
-}
-body.dark-mode #result-text {
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-    border-color: #666;
-}
-body.dark-mode #copy-button {
-    background-color: #555;
-    color: #e0e0e0;
-    border-color: #777;
-}
-body.dark-mode #copy-button:hover {
-    background-color: #666;
-}
-body.dark-mode .options-area {
-    color: #ccc;
-}
+/* --- ダークモードのスタイル --- */
+body.dark-mode { background-color: #2c2c2c; color: #e0e0e0; }
+body.dark-mode .container { background-color: #383838; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+body.dark-mode header { border-bottom-color: #444; } /* 区切り線の色 */
+body.dark-mode header h1 { color: #f0f0f0; }
+body.dark-mode .control-group { border-color: #555; }
+body.dark-mode .control-group legend { color: #e0e0e0; }
+body.dark-mode .dice-input { background-color: #444; color: #e0e0e0; border-color: #666; }
+body.dark-mode #result-text { background-color: #2a2a2a; color: #e0e0e0; border-color: #666; }
+body.dark-mode #copy-button { background-color: #555; color: #e0e0e0; border-color: #777; }
+body.dark-mode #copy-button:hover { background-color: #666; }
+body.dark-mode .options-area { color: #ccc; }
 
 
-/* --- ★★★ トグルスイッチのスタイル ★★★ --- */
-.theme-switcher {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-}
-.theme-toggle-label {
-    margin-right: 8px;
-    font-size: 0.8em;
-}
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-}
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-}
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
-}
-input:checked + .slider {
-    background-color: #007bff;
-}
-input:checked + .slider:before {
-    transform: translateX(20px);
-}
-.slider.round {
-    border-radius: 20px;
-}
-.slider.round:before {
-    border-radius: 50%;
-}
+/* --- トグルスイッチのスタイル --- */
+.theme-toggle-label { margin-right: 8px; font-size: 0.8em; }
+.switch { position: relative; display: inline-block; width: 40px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: #007bff; }
+input:checked + .slider:before { transform: translateX(20px); }
+.slider.round { border-radius: 20px; }
+.slider.round:before { border-radius: 50%; }
 
 
-/* --- その他のスタイル (v1.2からほぼ変更なし) --- */
+/* --- その他のスタイル --- */
 .radio-group { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
 .input-group { display: flex; justify-content: center; gap: 10px; }
 .dice-input { width: 60px; padding: 8px; font-size: 1.2em; text-align: center; }
@@ -183,8 +130,8 @@ input:checked + .slider:before {
 @media (max-width: 600px) {
     body { padding: 0; }
     .container { padding: 15px; border-radius: 0; box-shadow: none; min-height: 100vh; }
-    header h1 { font-size: 1.2em; margin-right: 90px; /* スイッチと重ならないように調整 */ }
-    .theme-switcher { top: 5px; }
+    header h1 { font-size: 1.1em; /* スマホではタイトルをさらに少し小さく */ }
+    .theme-toggle-label { display: none; /* スマホでは「ダークモード」の文字を非表示に */ }
     .radio-group { flex-direction: column; align-items: flex-start; gap: 12px; }
     .input-group { justify-content: space-around; }
     .dice-input { width: 28%; padding: 10px 5px; }
