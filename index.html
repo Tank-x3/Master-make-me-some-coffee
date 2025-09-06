@@ -10,6 +10,14 @@
     <div class="container">
         <header>
             <h1>マスター、コーヒー淹れてよ・改・改・改 テキスト化ツール</h1>
+            <!-- ★★★ ダークモードスイッチを追加 ★★★ -->
+            <div class="theme-switcher">
+                <label for="theme-toggle" class="theme-toggle-label">ダークモード</label>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
         </header>
 
         <main>
@@ -35,7 +43,6 @@
                 <button id="generate-button">テキスト化！</button>
             </div>
             
-            <!-- オプションエリアを整理 -->
             <div class="options-area">
                 <label>
                     <input type="checkbox" id="reset-checkbox" checked>
