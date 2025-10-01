@@ -4,28 +4,6 @@ let menuData = {};
 
 // --- 初期化処理 ---
 document.addEventListener('DOMContentLoaded', () => {
-    // ★★★ ダークモードの初期化処理を追加 ★★★
-    const themeToggle = document.getElementById('theme-toggle');
-    
-    // 1. 保存された設定を読み込む
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeToggle.checked = true;
-    }
-
-    // 2. スイッチのイベントリスナーを設定
-    themeToggle.addEventListener('change', () => {
-        if (themeToggle.checked) {
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.body.classList.remove('dark-mode');
-            localStorage.setItem('theme', 'light');
-        }
-    });
-
-    // メニューデータの読み込み
     fetch('menu_data.json')
         .then(response => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -134,19 +112,30 @@ function generateMenu(genre, diceResults) {
     }
 }
 
+/**
+ * 「結果をコピー」ボタンが押されたときの処理
+ * @param {boolean} isAuto - 自動コピーかどうかを判定するフラグ
+ */
 function copyToClipboard(isAuto = false) {
     const resultTextarea = document.getElementById('result-text');
     const content = resultTextarea.value;
+
     if (!content) {
-        if (!isAuto) alert("コピーする内容がありません。");
+        // ★★★ メッセージ変更 (No.1) ★★★
+        if (!isAuto) alert("haaaa……ちょっと、コピーする内容がないわよ。やり直しなさい");
         return;
     }
+
     navigator.clipboard.writeText(content).then(() => {
         const copyButton = document.getElementById('copy-button');
         const originalText = copyButton.textContent;
         copyButton.textContent = 'コピー完了！';
         setTimeout(() => { copyButton.textContent = originalText; }, 2000);
-        if (!isAuto) alert("結果をクリップボードにコピーしました。");
+        
+        if (!isAuto) {
+            // ★★★ メッセージ変更 (No.2) ★★★
+            alert("結果をクリップボードとウオングループの機密情報内にコピーしたわ！");
+        }
     }, (err) => {
         if (!isAuto) alert("コピーに失敗しました。");
         console.error('コピー失敗:', err);
