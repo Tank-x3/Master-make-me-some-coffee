@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホープちゃん！飲み物ちょうだい！</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>ホープちゃん！<br>飲み物ちょうだい！</h1>
+            <button id="theme-toggle-btn">テーマ切替</button>
+        </header>
+
+        <main>
+            <section class="settings-panel">
+                <h2>設定</h2>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="auto-copy-check" checked>
+                        結果を自動でコピーする
+                    </label>
+                    <label>
+                        <input type="checkbox" id="include-judge-check">
+                        成否判定を結果に含める
+                    </label>
+                </div>
+            </section>
+
+            <section class="input-panel">
+                <h2>ダイス目入力</h2>
+                <div class="input-group">
+                    <label for="judge-dice">成否判定 (1d100)</label>
+                    <input type="number" id="judge-dice" min="1" max="100" placeholder="1〜100">
+                    <p class="error-message" id="error-judge"></p>
+                </div>
+                <div class="input-group">
+                    <label>メニュー (2d6)</label>
+                    <div class="horizontal-inputs">
+                        <div class="input-wrapper">
+                            <input type="number" id="menu-dice-1" min="1" max="6" placeholder="1〜6">
+                            <p class="error-message" id="error-menu-1"></p>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="number" id="menu-dice-2" min="1" max="6" placeholder="1〜6">
+                            <p class="error-message" id="error-menu-2"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <button id="generate-btn">テキスト化</button>
+
+            <section class="result-panel">
+                <h2>結果</h2>
+                <textarea id="result-text" rows="4" readonly placeholder="ここに結果が表示されます"></textarea>
+                <button id="copy-btn">コピー</button>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

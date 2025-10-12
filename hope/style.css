@@ -1,0 +1,160 @@
+/* 基本設定と変数定義 */
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --card-bg-color: #ffffff;
+    --border-color: #ddd;
+    --primary-color: #007bff;
+    --primary-text-color: #ffffff;
+    --secondary-bg-color: #6c757d;
+    --error-color: #d9534f;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg-color: #1e1e1e;
+    --border-color: #444;
+    --primary-color: #0d6efd;
+    --secondary-bg-color: #5a6268;
+}
+
+/* 全体スタイル */
+body {
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* パネルスタイル */
+.settings-panel,
+.input-panel,
+.result-panel {
+    background-color: var(--card-bg-color);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 設定エリア */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* 入力エリア */
+.input-group {
+    margin-bottom: 1rem;
+}
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.horizontal-inputs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-wrapper {
+    flex: 1;
+}
+
+
+/* ボタン */
+button {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+#theme-toggle-btn {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+#generate-btn {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    width: 100%;
+    font-weight: bold;
+}
+
+#copy-btn {
+    background-color: var(--secondary-bg-color);
+    color: var(--primary-text-color);
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+/* 結果エリア */
+#result-text {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    resize: vertical;
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    height: 1em; /* 高さを確保 */
+}
