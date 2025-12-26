@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ★★★ タイトルタグも修正 ★★★ -->
+    <title>マスター、コーヒー淹れてよ テキスト化ツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <!-- ★★★ タイトルテキストと改行を修正 ★★★ -->
+                <h1>マスター、コーヒー淹れてよ<br>テキスト化ツール</h1>
+                <div class="theme-switcher">
+                    <label for="theme-toggle" class="theme-toggle-label">ダークモード</label>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- (mainタグ以下は変更なし) -->
+            <div id="settings-area">
+                <fieldset class="control-group">
+                    <legend>ジャンル</legend>
+                    <div id="genre-selector" class="radio-group"></div>
+                </fieldset>
+                <fieldset class="control-group">
+                    <legend>ダイス目</legend>
+                    <div id="dice-inputs" class="input-group">
+                        <input type="number" id="dice1" class="dice-input" min="1" max="10" aria-label="ダイス1">
+                        <input type="number" id="dice2" class="dice-input" min="1" max="10" aria-label="ダイス2">
+                        <input type="number" id="dice3" class="dice-input" min="1" max="10" aria-label="ダイス3">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="button-area">
+                <button id="generate-button">テキスト化！</button>
+            </div>
+            <div class="options-area">
+                <label><input type="checkbox" id="reset-checkbox" checked>完了後に入力欄をリセット</label>
+                <label><input type="checkbox" id="autocopy-checkbox" checked>結果を自動でコピーする</label>
+            </div>
+            <div class="result-area">
+                <div class="result-header">
+                    <label for="result-text">結果</label>
+                    <button id="copy-button">手動でコピー</button>
+                </div>
+                <textarea id="result-text" readonly></textarea>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
